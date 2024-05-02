@@ -1,41 +1,55 @@
 "use server";
 
-import { User } from '@/app/types/User';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { NextRequest, NextResponse } from 'next/server'
-import React from 'react'
+import { sql, db } from "@vercel/postgres";
+import { NextResponse } from 'next/server';
 
-export async function POST(request: Request, response : NextApiResponse) {
-    
-    //Get access to submitted formdata
-    const res = await request.formData();
+import * as argon2 from "argon2";
+import { Arima } from "next/font/google";
+import { UserOnRegister } from "@/app/types/UserOnRegister";
+import { UserObject } from "@/app/types/UserObject";
 
-    if(res){
+export async function POST( request: Request ) {
+
         try {
+            
+            //Await the user data
+            const res = await request.formData();
 
-            const user : User = {
+            const password = res.get("password")?.toString();
+            const hash = await argon2.hash(`${password}`);
+            
+            //Store user data in an object
+            //Specify type later
+            const userData : UserOnRegister= {
                 firstName : res.get("firstName"),
                 lastName : res.get("lastName"),
                 email : res.get("email"),
-                password : res.get("password")
+                password : hash
             }
 
-            return NextResponse.json({status:200, message : "Registrierung erfolgreich!"})
+            const userResult = await sql`SELECT *  FROM users WHERE email = ${userData.email?.toString()}`;
 
+            console.log(userResult.rowCount);
+
+            if(userResult.rowCount != 0){
+                return NextResponse.json({status : 405, message : "User existiert bereits!"})
+            } else {
+                
+                 await sql`INSERT INTO users (first_name, last_name, email, password) VALUES (
+                    ${userData.firstName?.toString()},
+                    ${userData.lastName?.toString()},
+                    ${userData.email?.toString()},
+                    ${userData.password?.toString()})`;
+                
+                return NextResponse.json({status:200, message : "Registrierung erfolgreich!"})
+                
+            }            
+                
         } catch (error){
             
-            return NextResponse.json({status : 405, message : error})
+            return NextResponse.json({error:error})    
         
         }
     
     }
-    //Assign values to a User Object
-    //Types for the registering user Object can be found in @types->User.ts
-    // const user : User = {
-    //     firstName : res.get("firstName"),
-    //     lastName : res.get("lastName"),
-    //     email : res.get("email"),
-    //     password : res.get("password")
-    // }
-    return NextResponse.json({status : 500, message : "Registrierung fehlgeschlagen!"})
-} 
+ 

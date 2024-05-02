@@ -7,7 +7,7 @@ export default function Navbar(){
     <nav className='container mx-auto p-4 flex flex-col md:flex-row justify-between border-b-[1px] border-b-green-100'>
         
             <Link href="/" className='flex flex-row items-center *:text-[25px]'>
-            <Image src="/leaf.png" width={100} height={0} alt="Greenchat Logo"/>
+            <Image className='drop-shadow-md' src="/leaf.png" width={100} height={0} alt="Greenchat Logo"/>
             <span className='text-green-500 drop-shadow-sm'>Spring</span>
             <span className='text-green-900 drop-shadow-sm'>Chat</span>
             </Link>
