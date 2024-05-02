@@ -1,6 +1,6 @@
 "use server";
 
-import { User } from '@/app/@types/User';
+import { User } from '@/app/types/User';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from 'next/server'
 import React from 'react'
