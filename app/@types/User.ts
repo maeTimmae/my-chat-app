@@ -1,8 +1,8 @@
 export type User = {
-    firstName : string,
-    lastName : string,
-    email: string,
-    password: string,
+    firstName : FormDataEntryValue | null,
+    lastName : FormDataEntryValue | null,
+    email: FormDataEntryValue | null,
+    password: FormDataEntryValue | null,
     avatar? : File;
     friends? : User[]
 }
