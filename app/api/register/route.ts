@@ -1,13 +1,15 @@
 import { sql} from "@vercel/postgres";
 import { NextResponse } from 'next/server';
 
+import { connect } from "@/app/lib/db/db";
+
 import * as argon2 from "argon2";
 import { UserOnRegister } from "@/app/types/UserOnRegister";
 
-export async function POST( request: Request ) {
+export async function POST( request: Request ) { 
 
         try {
-            
+            const dbClient = connect();
             //Await the user data
             const res = await request.formData();
 
@@ -23,7 +25,7 @@ export async function POST( request: Request ) {
                 password : hash
             }
 
-            const userResult = await sql`SELECT *  FROM users WHERE email = ${userData.email?.toString()}`;
+            const userResult = await (await dbClient).sql`SELECT *  FROM users WHERE email = ${userData.email?.toString()}`;
 
             console.log(userResult.rowCount);
 
