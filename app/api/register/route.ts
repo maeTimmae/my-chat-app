@@ -1,12 +1,8 @@
-"use server";
-
-import { sql, db } from "@vercel/postgres";
+import { sql} from "@vercel/postgres";
 import { NextResponse } from 'next/server';
 
 import * as argon2 from "argon2";
-import { Arima } from "next/font/google";
 import { UserOnRegister } from "@/app/types/UserOnRegister";
-import { UserObject } from "@/app/types/UserObject";
 
 export async function POST( request: Request ) {
 

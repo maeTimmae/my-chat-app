@@ -1,10 +1,4 @@
-"use client";
-
-import { NextApiResponse } from 'next';
-import { NextResponse } from 'next/server';
-import React, { FormEvent } from 'react'
-import { useState } from 'react'
-
+import React, { FormEvent } from 'react
 import { Urbanist } from 'next/font/google';
 import Link from 'next/link';
 
@@ -14,28 +8,11 @@ const urbanist = Urbanist({
 
 export default function RegisterMask() {
 
-    //Setup Formdata to capsule user input in Object
-    const userFormData = new FormData();
-
-    //Handle user input and att it to formdata
-    const [firstName, setFirstName] = useState<FormDataEntryValue>("");
-    const [lastName, setLastName] = useState<FormDataEntryValue>("");
-    const [email, setEmail] = useState<FormDataEntryValue>("");
-    const [password, setPassword] = useState<FormDataEntryValue>("");
-
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    userFormData.append("firstName", firstName);
-    userFormData.append("lastName", lastName);
-    userFormData.append("email", email);
-    userFormData.append("password", password);
 
     const submitUserFormData = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
-
-        //Show spinner as long as response is not here
-        setIsLoading(true);
+        const userFormData = new FormData(event.currentTarget);
 
         try {
             fetch("/api/register", {
@@ -53,9 +30,7 @@ export default function RegisterMask() {
         
         } catch (error) {
             console.error(error);
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     }
 
 
@@ -74,7 +49,6 @@ export default function RegisterMask() {
                             type="text"
                             autoComplete='on'
                             required
-                            onChange={e => setFirstName(e.target.value)}
                             minLength={6}
                             maxLength={32}
                             placeholder=" "
@@ -94,7 +68,6 @@ export default function RegisterMask() {
                             type="text"
                             autoComplete='on'
                             required
-                            onChange={e => setLastName(e.target.value)}
                             minLength={6}
                             maxLength={32}
                             placeholder=" "
@@ -114,7 +87,6 @@ export default function RegisterMask() {
                             type="text"
                             autoComplete='on'
                             required
-                            onChange={e => setEmail(e.target.value)}
                             minLength={6}
                             maxLength={32}
                             placeholder=" "
@@ -126,12 +98,11 @@ export default function RegisterMask() {
                     </div>
                     <div className='relative'>
                         <input
-                            name="lastname"
+                            name="password"
                             id="user--password"
                             type="password"
                             autoComplete='off'
                             required
-                            onChange={e => setPassword(e.target.value)}
                             minLength={6}
                             maxLength={32}
                             placeholder=" "
@@ -153,14 +124,14 @@ export default function RegisterMask() {
             </form>
 
             {
-                isLoading &&     
-                <button className='inline-flex bg-slate-500 p-4 rounded-lg text-white font-bold' type='button' disabled>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>   
-                    Bearbeite...
-                </button>
+                // isLoading &&     
+                // <button className='inline-flex bg-slate-500 p-4 rounded-lg text-white font-bold' type='button' disabled>
+                //     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                //         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                //         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                //     </svg>   
+                //     Bearbeite...
+                // </button>
             }
         </div>
     )
