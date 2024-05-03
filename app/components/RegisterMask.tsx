@@ -1,4 +1,6 @@
-import React, { FormEvent } from 'react';
+"use client";
+
+import React, { FormEvent, use } from 'react';
 import { Urbanist } from 'next/font/google';
 import Link from 'next/link';
 
@@ -8,11 +10,11 @@ const urbanist = Urbanist({
 
 export default function RegisterMask() {
 
-
     const submitUserFormData = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
         const userFormData = new FormData(event.currentTarget);
+        console.log(userFormData);
 
         try {
             fetch("/api/register", {
@@ -20,12 +22,7 @@ export default function RegisterMask() {
                 body: userFormData,
             })
             .then(response => response.json()
-            .then(response => {
-                        
-                response.ok &&  
-                    <span className='success'>Registrierung erfolgreich</span>
-
-            }
+            .then(response => console.log(response)
             ));
         
         } catch (error) {

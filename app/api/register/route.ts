@@ -17,8 +17,8 @@ export async function POST( request: Request ) {
             //Store user data in an object
             //Specify type later
             const userData : UserOnRegister= {
-                firstName : res.get("firstName"),
-                lastName : res.get("lastName"),
+                firstName : res.get("firstname"),
+                lastName : res.get("lastname"),
                 email : res.get("email"),
                 password : hash
             }
