@@ -77,11 +77,12 @@ export default function RegisterMask() {
                             onChange={e => setFirstName(e.target.value)}
                             minLength={6}
                             maxLength={32}
+                            placeholder=" "
                             className='bg-transparent peer-focus:border-green-400 rounded-md peer appearance-none shadow-md p-4 border-[1px] border-green-100  '
                         >
                         </input>
                         <label htmlFor='user--firstname'
-                            className='absolute transform duration-300 peer-focus:-translate-y-9 peer-focus:scale-75 peer-focus:p-1 peer-focus:text-green-500 peer-focus:bg-white opacity-20 peer-focus:opacity-100 top-4 left-2'>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
                             Vorname
                         </label>
                     </div>
@@ -96,46 +97,49 @@ export default function RegisterMask() {
                             onChange={e => setLastName(e.target.value)}
                             minLength={6}
                             maxLength={32}
+                            placeholder=" "
                             className='bg-transparent peer-focus:border-green-400 rounded-md peer appearance-none shadow-md p-4 border-[1px] border-green-100'
                         >
                         </input>
-                        <label htmlFor='user--firstname'
-                            className='absolute transform duration-300 peer-focus:-translate-y-9 peer-focus:scale-75 peer-focus:p-1 peer-focus:text-green-500 peer-focus:bg-white opacity-20 peer-focus:opacity-100 top-4 left-2'>
+                        <label htmlFor='user--lastname'
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
                             Nachname
                         </label>
                     </div>
 
                     <div className='relative'>
                         <input
-                            name="lastname"
-                            id="user--lastname"
+                            name="email"
+                            id="user--email"
                             type="text"
                             autoComplete='on'
                             required
                             onChange={e => setEmail(e.target.value)}
                             minLength={6}
                             maxLength={32}
+                            placeholder=" "
                             className='bg-transparent peer-focus:border-green-400 rounded-md peer appearance-none shadow-md p-4 border-[1px] border-green-100'
                         >
                         </input>
-                        <label htmlFor='user--firstname'
-                            className='absolute transform duration-300 peer-focus:-translate-y-9 peer-focus:scale-75 peer-focus:p-1 peer-focus:text-green-500 peer-focus:bg-white opacity-20 peer-focus:opacity-100 top-4 left-2'>E-Mail</label>
+                        <label htmlFor='user--email'
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>E-Mail</label>
                     </div>
                     <div className='relative'>
                         <input
                             name="lastname"
-                            id="user--lastname"
+                            id="user--password"
                             type="password"
                             autoComplete='off'
                             required
                             onChange={e => setPassword(e.target.value)}
                             minLength={6}
                             maxLength={32}
+                            placeholder=" "
                             className='bg-transparent peer-focus:border-green-400 rounded-md peer appearance-none shadow-md p-4 border-[1px] border-green-100'
                         >
                         </input>
-                        <label htmlFor='user--firstname'
-                            className='absolute transform duration-300 peer-focus:-translate-y-9 peer-focus:scale-75 peer-focus:p-1 peer-focus:text-green-500 peer-focus:bg-white opacity-20 peer-focus:opacity-100 top-4 left-2'>Passwort</label>
+                        <label htmlFor='user--password'
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
                     
                     </div>
 
