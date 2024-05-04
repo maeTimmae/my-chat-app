@@ -1,36 +1,36 @@
 import { Lucia } from "lucia";
-import { PostgresJsAdapter } from "@lucia-auth/adapter-postgresql";
-import postgres from "postgres"
+import { PrismaAdapter } from "@lucia-auth/adapter-prisma"
+import { prisma } from "../prisma";
 
-const sql = postgres();
+const adapter = new PrismaAdapter(prisma.session,  prisma.user);
 
-export const lucia = new Lucia(new PostgresJsAdapter(sql, {
-    user : "users",
-    session : "user_session"
-}),{
+export const lucia = new Lucia(adapter, {
     sessionCookie: {
-        expires : false,
-        attributes : {
-            secure: process.env.NODE_ENV === "production"
-        }
+      // this sets cookies with super long expiration
+      // since Next.js doesn't allow Lucia to extend cookie expiration when rendering pages
+      expires: false,
+      attributes: {
+        // set to `true` when using HTTPS
+        secure: process.env.NODE_ENV === 'production',
+      },
     },
-    getUserAttributes : (attributes) => {
-        return {
-            email : attributes.email,
-            password : attributes.password
-        }
-    }
-
-});
-
-declare module "lucia" {
+    getUserAttributes: (attributes) => {
+      return {
+        // attributes has the type of DatabaseUserAttributes
+        email: attributes.email,
+      };
+    },
+  });
+  
+  declare module 'lucia' {
     interface Register {
-      Lucia: typeof Lucia;
-      DatabaseUserAttributes : DatabaseUserAttributes;
+      Lucia: typeof lucia;
+      DatabaseUserAttributes: DatabaseUserAttributes;
     }
   }
+  
+  interface DatabaseUserAttributes {
+    email: string  | undefined;
+  }
 
-interface DatabaseUserAttributes {
-    email : string,
-    password : string
-}
+    export type Auth = typeof lucia;

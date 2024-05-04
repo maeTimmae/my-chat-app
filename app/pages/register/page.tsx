@@ -8,7 +8,7 @@ export default function RegisterPage() {
 
             <div className="flex flex-col items-center w-1/2 text-center">
                 <p className="w-[75%] text-[30px] text-justify"> Vernetze dich mit mit deinen Freunden oder schließe neue Freundschaften!</p>
-                <p className="text-center w-full *:text-[30px]">
+                <p className="text-center w-full *:text-[30px] mb-10">
                     <span className='text-green-500 drop-shadow-sm'>Spring</span>
                     <span className='text-green-900 drop-shadow-sm'>Chat</span>
                 </p>

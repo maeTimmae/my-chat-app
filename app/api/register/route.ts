@@ -1,53 +1,75 @@
-import { sql} from "@vercel/postgres";
-import { NextResponse } from 'next/server';
-
-import { connect } from "@/app/lib/db/db";
-
-import * as argon2 from "argon2";
+import { generateId } from "lucia";
+import * as Argon2 from "argon2";
 import { UserOnRegister } from "@/app/types/UserOnRegister";
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/app/lib/prisma";
 
-export async function POST( request: Request ) { 
 
-        try {
-            const dbClient = connect();
-            //Await the user data
-            const res = await request.formData();
+export async function POST( 
+    request: NextRequest , 
+    response : NextResponse
+) : Promise <NextResponse | undefined> { 
 
-            const password = res.get("password")?.toString();
-            const hash = await argon2.hash(`${password}`);
+
+                //Await the submitted data from user
+                const res = await request.formData();
+
+                //Make an if-clause for checking if the formdata is null
+                //If so immediately send a NextResponse with 404 Statuscode
+                if( res == null ){
+                    return NextResponse.json({
+                        status:404,
+                        message: "Formdata not found"
+                    });
+
+                } else {
+
+                //Hash the password for safe storage    
+                const hash = await Argon2.hash(`${res.get("password")!.toString()}`);
+                
+                const user = {
+                    firstName : res.get("firstname")!,
+                    lastName : res.get("lastname")!,
+                    email : res.get("email")!,
+                    password : hash
+                }
+                
+                const userResult = await prisma.user.findUnique({
+                    where : { email : user.email.toString() },
+                });
+
+                    //Make a second if clause and check, if the user who wants to register
+                    //already exists
+                    if( userResult != null ){
+                        
+                        return NextResponse.json({
+                            status : 405, 
+                            message : "User existiert bereits!"
+                        });
+                    
+                    } else {
+
+                        const userid = generateId(15);
+
+                        await prisma.user.create({
+                            data:{
+                                id : userid,
+                                email : user.email.toString(),
+                                firstName :user.firstName.toString(),
+                                lastName : user.lastName.toString(),
+                                hashedPassword : user.password
+                            }
+                        })
+
+                        return NextResponse.json({
+                            status:200, 
+                            message:"Registrierung erfolgreich!"
+                        });
+
+                    }
             
-            //Store user data in an object
-            //Specify type later
-            const userData : UserOnRegister= {
-                firstName : res.get("firstname"),
-                lastName : res.get("lastname"),
-                email : res.get("email"),
-                password : hash
-            }
-
-            const userResult = await (await dbClient).sql`SELECT *  FROM users WHERE email = ${userData.email?.toString()}`;
-
-            console.log(userResult.rowCount);
-
-            if(userResult.rowCount != 0){
-                return NextResponse.json({status : 405, message : "User existiert bereits!"})
-            } else {
-                
-                 await sql`INSERT INTO users (first_name, last_name, email, password) VALUES (
-                    ${userData.firstName?.toString()},
-                    ${userData.lastName?.toString()},
-                    ${userData.email?.toString()},
-                    ${userData.password?.toString()})`;
-                
-                return NextResponse.json({status:200, message : "Registrierung erfolgreich!"})
-                
-            }            
-                
-        } catch (error){
-            
-            return NextResponse.json({error:error})    
+                }
         
-        }
-    
-    }
+
+}
  

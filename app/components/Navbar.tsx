@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Navbar(){
  return (
-    <nav className='container mx-auto p-4 flex flex-col md:flex-row justify-between border-b-[1px] border-b-green-100'>
+    <nav className='container mx-auto p-4 flex flex-col md:flex-row justify-between border-b-[1px] backdrop-blur-xl border-b-green-100'>
         
             <Link href="/" className='flex flex-row items-center *:text-[25px]'>
             <Image className='drop-shadow-md' src="/leaf.png" width={100} height={0} alt="Greenchat Logo"/>
