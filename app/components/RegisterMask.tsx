@@ -28,7 +28,7 @@ export default function RegisterMask() {
             .then(response => {
     
                 if(response.status == 200){
-                    router.push("/login");
+                    router.push("/pages/login");
                 }
             });
         

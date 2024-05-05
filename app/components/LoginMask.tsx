@@ -1,15 +1,27 @@
-import React from 'react'
+"use client";
+
+import React, { FormEvent } from 'react'
 import { Urbanist } from 'next/font/google';
 import Link from 'next/link';
-import { ActionResult } from 'next/dist/server/app-render/types';
 
 const urbanist = Urbanist({
     subsets: ["latin"],
 })
 
 
-const loginUser = async () => {
+const loginUser = async (event: FormEvent<HTMLFormElement>) => {
     
+    event.preventDefault();
+    const userFormData = new FormData(event.currentTarget);
+
+    try {
+        fetch("/api/login", {
+            method: "POST",
+            body: userFormData,
+        });
+    } catch (error) {
+        console.error(error);
+    } 
 }
 
 
@@ -19,7 +31,7 @@ export default function LoginMask() {
     <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] shadow-md shadow-green-200 p-4`}>
             <h1 className='mb-10 text-[30px] font-bold'>Login</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
-            <form method='POST' action={""}>
+            <form method='POST' action={""} onSubmit={loginUser}>
                 <div className='flex flex-col items-center justify-center w-full gap-6'>
 
 
