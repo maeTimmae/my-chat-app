@@ -1,32 +1,45 @@
 "use client";
-
 import React, { FormEvent } from 'react'
 import { Urbanist } from 'next/font/google';
 import Link from 'next/link';
+import { lucia } from '../lib/auth/lucia';
+import { useRouter } from 'next/navigation';
 
 const urbanist = Urbanist({
     subsets: ["latin"],
 })
 
 
-const loginUser = async (event: FormEvent<HTMLFormElement>) => {
-    
-    event.preventDefault();
-    const userFormData = new FormData(event.currentTarget);
-
-    try {
-        fetch("/api/login", {
-            method: "POST",
-            body: userFormData,
-        });
-    } catch (error) {
-        console.error(error);
-    } 
-}
-
 
 
 export default function LoginMask() {
+    const router = useRouter();
+
+    const loginUser = async (event: FormEvent<HTMLFormElement>) => {
+        
+        event.preventDefault();
+        const userFormData = new FormData(event.currentTarget);
+    
+        const formElement = event.target as HTMLFormElement;
+    
+    
+        try {
+            fetch("/api/login", {
+                method: "POST",
+                body: userFormData,
+            }).then( res => res.json())
+              .then( res => {
+                    if(res.status == 200)router.push("/pages/dashboard");
+                    else router.push("/pages/login");
+              }); 
+    
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+   
+    
   return (
     <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] shadow-md shadow-green-200 p-4`}>
             <h1 className='mb-10 text-[30px] font-bold'>Login</h1>

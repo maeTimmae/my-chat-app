@@ -3,6 +3,7 @@ import * as Argon2 from "argon2";
 import { UserOnRegister } from "@/app/types/UserOnRegister";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { PrismaClient } from "@prisma/client";
 
 
 export async function POST( 
@@ -10,6 +11,8 @@ export async function POST(
     response : NextResponse
 ) : Promise <NextResponse | undefined> { 
 
+                //Initialize a new PrismaClient
+                const client = new PrismaClient();
 
                 //Await the submitted data from user
                 const res = await request.formData();
@@ -34,7 +37,7 @@ export async function POST(
                     password : hash
                 }
                 
-                const userResult = await prisma.user.findUnique({
+                const userResult = await client.user.findUnique({
                     where : { email : user.email.toString() },
                 });
 
@@ -51,7 +54,7 @@ export async function POST(
 
                         const userid = generateId(15);
 
-                        await prisma.user.create({
+                        await client.user.create({
                             data:{
                                 id : userid,
                                 email : user.email.toString(),
