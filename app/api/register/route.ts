@@ -1,6 +1,5 @@
-import { generateId } from "lucia";
+import { generateId, generateIdFromEntropySize } from "lucia";
 import * as Argon2 from "argon2";
-import { UserOnRegister } from "@/app/types/UserOnRegister";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { PrismaClient } from "@prisma/client";
@@ -52,7 +51,7 @@ export async function POST(
                     
                     } else {
 
-                        const userid = generateId(15);
+                        const userid = generateIdFromEntropySize(10);
 
                         await client.user.create({
                             data:{

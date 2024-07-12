@@ -1,8 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from "next/image"
+import { getAuth } from '../lib/auth/auth';
+
+
 
 export default function Navbar(){
+
  return (
     <nav className='container mx-auto p-4 flex flex-col md:flex-row justify-between border-b-[1px] backdrop-blur-xl border-b-green-100'>
         

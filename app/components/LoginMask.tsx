@@ -9,9 +9,6 @@ const urbanist = Urbanist({
     subsets: ["latin"],
 })
 
-
-
-
 export default function LoginMask() {
     const router = useRouter();
 
