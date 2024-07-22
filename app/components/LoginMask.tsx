@@ -33,7 +33,7 @@ export default function LoginMask() {
     }   
     
     return (
-    <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] shadow-md shadow-green-200 p-4`}>
+    <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] bg-green-200 bg-opacity-20 p-4 shadow-md `}>
             <h1 className='mb-10 text-[30px] font-bold'>Login</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
             <form method='POST' action={""} onSubmit={loginUser}>
@@ -54,7 +54,7 @@ export default function LoginMask() {
                         >
                         </input>
                         <label htmlFor='user--email'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>E-Mail</label>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>E-Mail</label>
                     </div>
                     <div className='relative'>
                         <input
@@ -70,7 +70,7 @@ export default function LoginMask() {
                         >
                         </input>
                         <label htmlFor='user--password'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
                     
                     </div>
 

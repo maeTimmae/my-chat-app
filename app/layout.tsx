@@ -3,12 +3,8 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Link from "next/link";
 
-const roboto = Roboto({
-  weight: "900",
-  display: "swap",
-  subsets:["latin"]
-});
 
 export const metadata: Metadata = {
   title: "Spring-Chat",
@@ -22,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className}`}>
-        <Navbar / >
+      <body className={`h-screen`}>
+        {/* <Navbar / > */}
         {children}
         {/* <Footer /> */}
       </body>

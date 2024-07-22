@@ -40,7 +40,7 @@ export default function RegisterMask() {
 
     return (
         // Wrapper Div for form
-        <div className={`${urbanist.className} text-center rounded-xl w-[500px] shadow-lg shadow-green-300`}>
+        <div className={`${urbanist.className} text-center rounded-xl w-[500px] bg-green-200 bg-opacity-20 shadow-md`}>
             <h1 className='mb-5 text-[30px] font-bold'>Registrieren</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
             <form method='POST' action={""} onSubmit={submitUserFormData}>
@@ -60,7 +60,7 @@ export default function RegisterMask() {
                         >
                         </input>
                         <label htmlFor='user--firstname'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-50 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
                             Vorname
                         </label>
                     </div>
@@ -79,7 +79,7 @@ export default function RegisterMask() {
                         >
                         </input>
                         <label htmlFor='user--lastname'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-50 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>
                             Nachname
                         </label>
                     </div>
@@ -98,7 +98,7 @@ export default function RegisterMask() {
                         >
                         </input>
                         <label htmlFor='user--email'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-50 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>E-Mail</label>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>E-Mail</label>
                     </div>
                     <div className='relative'>
                         <input
@@ -114,7 +114,7 @@ export default function RegisterMask() {
                         >
                         </input>
                         <label htmlFor='user--password'
-                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-50 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
+                            className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-transparent peer-focus:bg-white peer-focus:rounded-full peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-black peer-placeholder-shown:opacity-20 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
 
                     </div>
 
