@@ -24,28 +24,28 @@ export default function RegisterMask() {
                 method: "POST",
                 body: userFormData,
             })
-            .then(response => response.json())
-            .then(response => {
-    
-                if(response.status == 200){
-                    router.push("/pages/login");
-                }
-            });
-        
+                .then(response => response.json())
+                .then(response => {
+
+                    if (response.status == 200) {
+                        router.push("/pages/login");
+                    }
+                });
+
         } catch (error) {
             console.error(error);
-        } 
+        }
     }
 
 
     return (
         // Wrapper Div for form
-        <div className={`${urbanist.className} text-center rounded-xl w-[500px] shadow-lg shadow-green-300 p- mt-10`}>
-            <h1 className='mb-10 text-[30px] font-bold'>Registrieren</h1>
+        <div className={`${urbanist.className} text-center rounded-xl w-[500px] shadow-lg shadow-green-300`}>
+            <h1 className='mb-5 text-[30px] font-bold'>Registrieren</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
             <form method='POST' action={""} onSubmit={submitUserFormData}>
                 <div className='flex flex-col items-center justify-center w-full gap-6'>
-                    
+
                     <div className='relative'>
                         <input
                             name="firstname"
@@ -64,7 +64,7 @@ export default function RegisterMask() {
                             Vorname
                         </label>
                     </div>
-                    
+
                     <div className='relative'>
                         <input
                             name="lastname"
@@ -115,14 +115,14 @@ export default function RegisterMask() {
                         </input>
                         <label htmlFor='user--password'
                             className='absolute transform duration-300 -translate-y-8 px-2 scale-75 text-green-500 opacity-100 bg-white peer-focus:bg-white peer-focus:opacity-100 top-4 left-2 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:bg-white peer-placeholder-shown:text-black peer-placeholder-shown:opacity-50 peer-focus:text-green-500 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:px-2'>Passwort</label>
-                    
+
                     </div>
 
                     <div className='flex p-4 flex-col justify-center gap-2'>
                         <button type="submit" className='rounded-lg bg-green-500 drop-shadow-md hover:bg-green-700 text-white p-4'>Registrieren</button>
                         <Link className='text-[10px] break-words text-center hover:text-green-500' href="/pages/login"> Schon registriert? Hier gehts zum Login!</Link>
                     </div>
-                
+
                 </div>
 
             </form>

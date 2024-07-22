@@ -9,14 +9,22 @@ export default async function page() {
 
   const user = await getAuth();
 
-  console.log("USER");
-  console.log(user);
-
   if(!user.session) {
+    console.log(user);
     return redirect("/pages/login");
   }
 
   return (
-    <div>Welcome you are on the dashboard now!</div>
+    <main className='grid grid-cols-4 container mx-auto min-w-fit min-h-fit shadow-md rounded-md'>
+      <div className="contacts col-span-1 bg-green-800 rounded-tl-md rounded-bl-md p-2">
+        <ul className=''>
+          <li>Kontakt1</li>
+          <li>Kontakt2</li>
+        </ul>
+      </div>
+      <div className="chat bg-green-200 col-span-3 rounded-tr-md rounded-br-md p-2">
+        hi
+      </div>      
+    </main>
   )
 }

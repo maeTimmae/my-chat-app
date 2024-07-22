@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 
 const roboto = Roboto({
   weight: "900",
-  style:"normal",
   display: "swap",
   subsets:["latin"]
 });
@@ -23,10 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={`${roboto.className}`}>
         <Navbar / >
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

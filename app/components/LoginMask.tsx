@@ -2,8 +2,8 @@
 import React, { FormEvent } from 'react'
 import { Urbanist } from 'next/font/google';
 import Link from 'next/link';
-import { lucia } from '../lib/auth/lucia';
 import { useRouter } from 'next/navigation';
+import { getAuth } from '../lib/auth/auth';
 
 const urbanist = Urbanist({
     subsets: ["latin"],
@@ -16,9 +16,6 @@ export default function LoginMask() {
         
         event.preventDefault();
         const userFormData = new FormData(event.currentTarget);
-    
-        const formElement = event.target as HTMLFormElement;
-    
     
         try {
             fetch("/api/login", {
@@ -33,11 +30,9 @@ export default function LoginMask() {
         } catch (error) {
             console.error(error);
         }
-    }
-
-   
+    }   
     
-  return (
+    return (
     <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] shadow-md shadow-green-200 p-4`}>
             <h1 className='mb-10 text-[30px] font-bold'>Login</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
@@ -83,21 +78,8 @@ export default function LoginMask() {
                         <button type="submit" className='rounded-lg bg-green-500 drop-shadow-md hover:bg-green-700 text-white font-bold p-4'>Login</button>
                         <Link className='text-[10px] break-words text-center hover:text-green-500' href="/pages/register"> Kein Konto? Hier registrieren!</Link>
                     </div>
-                
                 </div>
-
             </form>
-
-            {
-                // isLoading &&     
-                // <button className='inline-flex bg-slate-500 p-4 rounded-lg text-white font-bold' type='button' disabled>
-                //     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                //         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                //         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                //     </svg>   
-                //     Bearbeite...
-                // </button>
-            }
         </div>
   )
 }
