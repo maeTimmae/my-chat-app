@@ -8,9 +8,7 @@ import { IoLogOutOutline } from 'react-icons/io5';
 export default function LogoutButton() {
 
     const logout = async () => {
-        await fetch("http://localhost:3000/api/logout", {
-            method: "GET"
-        });
+        await fetch("http://localhost:3000/api/logout");
         return redirect("/pages/login");
     }
   
