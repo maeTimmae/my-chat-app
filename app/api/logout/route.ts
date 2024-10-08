@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
+export async function handler() {
     const { session } = await getAuth();
     console.log(session);
     await lucia.invalidateSession(session!.id);
