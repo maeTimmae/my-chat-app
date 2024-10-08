@@ -6,10 +6,10 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST (req : NextRequest) {
-    const { user } = await getAuth();
-    console.log(user);
-    await lucia.invalidateSession(user!.id);
+export async function GET () {
+    const { session } = await getAuth();
+    console.log(session);
+    await lucia.invalidateSession(session!.id);
 
     const sessionCookie = lucia.createBlankSessionCookie();
     cookies().set(

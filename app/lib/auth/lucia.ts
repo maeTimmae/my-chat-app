@@ -2,6 +2,7 @@ import { Lucia, Session, User } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma"
 import { prisma } from "../prisma";
 import { IncomingMessage, ServerResponse } from "http";
+import middleware from "@/middleware";
 
 const adapter = new PrismaAdapter(
 
@@ -11,7 +12,7 @@ const adapter = new PrismaAdapter(
 );
 
 export const lucia = new Lucia(
-    adapter, 
+    adapter,
     {
       sessionCookie: {
         // this sets cookies with super long expiration

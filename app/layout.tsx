@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Link from "next/link";
 
+const inter = Inter({
+  weight :"variable",
+  subsets : ["latin"],
+  display : "swap"
+})
 
 export const metadata: Metadata = {
   title: "Spring-Chat",
@@ -17,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`h-screen`}>
-        {/* <Navbar / > */}
+    <html lang="de">
+      <body className={`${inter.className}`}>
+        <Navbar />
         {children}
         {/* <Footer /> */}
       </body>

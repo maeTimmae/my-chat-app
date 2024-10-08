@@ -33,7 +33,7 @@ export default function LoginMask() {
     }   
     
     return (
-    <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] bg-green-200 bg-opacity-20 p-4 shadow-md `}>
+    <div className={`${urbanist.className} text-center rounded-xl h-min w-[500px] p-4 shadow-md *:text-black`}>
             <h1 className='mb-10 text-[30px] font-bold'>Login</h1>
             <div className='mb-10'>Werde Teil der <span className='text-green-500'>Spring</span><span className='text-green-900'>Chat</span>-Community! </div>
             <form method='POST' action={""} onSubmit={loginUser}>

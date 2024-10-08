@@ -1,7 +1,6 @@
 import { generateId, generateIdFromEntropySize } from "lucia";
 import * as Argon2 from "argon2";
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/app/lib/prisma";
 import { PrismaClient } from "@prisma/client";
 
 
